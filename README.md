@@ -119,7 +119,7 @@ Follow the guide beneath to set up the project locally:
 
 ### Photos
 ![main](readme_img/main.jpeg)
-![cartPreview](readme_img/cartPreview.jpeg)
+![cartPreview](readme_img/cartPreview.png)
 ![summary](readme_img/summary.jpeg)
 ![empty summary](readme_img/summaryEmpty.jpeg)
-![form](readme_img/form.png)
+![form](readme_img/form.jpeg)
