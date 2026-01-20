@@ -25,9 +25,42 @@ Introduced a rigorous testing strategy covering two layers:
 
 ---
 
-## 🧪 Testing Strategy
+## 🧪 Testing Architecture
 
-The project includes 10 key E2E scenarios (Playwright) to ensure the stability of critical business features:
+The project maintains a high standard of reliability through a rigorous testing suite divided into Unit, Integration, and End-to-End layers.
+
+### 1. Integration & Component Testing (Vitest + RTL)
+These tests ensure that components interact correctly with data and global states using sophisticated **Mocking Strategies**:
+
+* **API & Service Mocking**: 
+    * Mocked the entire Unsplash API module (`vi.mock('../../../api')`) to simulate successful data fetching (Happy Path) and network failures.
+    * This allows for testing the `ProductList` component's "Loading" and "Error" states without real network overhead.
+* **Global State Mocking (Hooks & Stores)**:
+    * **Cart Context**: Mocked `useCart` to simulate various cart states (empty vs. populated) and spy on actions like `removeFromCart`.
+    * **Zustand Modal Store**: Mocked `useModalStore` implementation to verify that clicking "Reserve" triggers the correct global state changes.
+* **UI Library Mocking**: 
+    * Mocked `@react-spring/web` and `@radix-ui/themes` to bypass heavy layout calculations and focus on testing functional logic.
+
+### 2. Logic & Unit Testing (Pure Vitest)
+Isolated tests for business logic, calculations, and data transformations:
+
+* **Financial Calculations**: Verified `calculateBaseTotal` and `calculateTotalQuantity` for mathematical accuracy in the shopping cart.
+* **Price Formatting**: Validated the `formatDisplayPrice` utility to ensure currency is correctly formatted for the end-user (e.g., fallback patterns and decimal rounding).
+* **Discount Engine (Zustand Store)**:
+    * **Case-Insensitive Codes**: Tested that `PLANTS20` works regardless of letter casing.
+    * **Final Price Logic**: Ensured discounts are applied correctly to totals and that multiple codes do not "stack" incorrectly.
+    * **Negative Testing**: Verified that invalid codes correctly reset or clear previous discounts.
+* **Data Processing & Filtering**:
+    * **Deterministic Mapping**: Tested `mapImagesToProducts` to ensure the same image ID always results in the same product type and stable price (Price consistency 50-500 range).
+    * **Filter Logic**: Confirmed that `filterProductsByType` accurately isolates categories (e.g., "Cactus") and handles duplicate IDs gracefully.
+* **Form Validation (Yup Schema)**:
+    * Exhaustive tests for the **Reservation Form**:
+        * Validating email formats (rejections of missing `@`).
+        * Enforcing length constraints (Name "Too short" or "Too long").
+        * Regex validation for numeric-only phone fields.
+
+### 3. End-to-End Testing (Playwright)
+Detailed browser-level automation covering the entire customer journey:
 
 | ID | Test Case | Description (What is being tested?) |
 |:---|:---|:---|
