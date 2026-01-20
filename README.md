@@ -2,45 +2,45 @@
 
 # Greenery v2.0 - Advanced React E-commerce
 
-Rozbudowana wersja projektu sklepu z roślinami. Ta iteracja skupia się na **jakości kodu (QA)**, pełnym pokryciu testami (E2E + Unit), zaawansowanym zarządzaniu stanem oraz responsywności interfejsu (RWD).
+An enhanced version of the plant shop project. This iteration focuses on **Code Quality (QA)**, full testing coverage (E2E + Unit), advanced state management, and **Responsive Web Design (RWD)**.
 
 ## 🚀 Key Improvements vs v1.0
 
-W porównaniu do pierwotnej wersji (MVP), projekt został znacząco rozbudowany technicznie:
+Compared to the initial version (MVP), the project has been significantly upgraded technically:
 
-### 1. Responsywność (RWD) & UI/UX
-* **Mobile-First Grid**: Implementacja responsywnej siatki produktów (przejście z 3 kolumn na desktopie do 1 na mobile) przy użyciu Radix UI Grid.
-* **Adaptive Navigation**: Przebudowa nagłówka (`Header`) i paska nawigacji (`Navbar`) z użyciem CSS Media Queries oraz Flexbox, zapewniająca czytelność na małych ekranach.
-* **Micro-interactions**: Dodanie animacji przycisków i kart produktów przy użyciu `react-spring` (efekt hover, scale).
+### 1. Responsiveness (RWD) & UI/UX
+* **Mobile-First Grid**: Implemented a responsive product grid (transitioning from 3 columns on desktop to 1 on mobile) using Radix UI Grid.
+* **Adaptive Navigation**: Rebuilt the `Header` and `Navbar` using CSS Media Queries and Flexbox to ensure readability and usability on small screens.
+* **Micro-interactions**: Added button and product card animations using `react-spring` (hover effects, scaling).
 
-### 2. Rozszerzona Logika Biznesowa
-* **Cart Management**: Pełna obsługa koszyka – dodawanie, usuwanie pojedynczych sztuk (`decrement`), całkowite czyszczenie pozycji (`remove`) oraz obsługa stanów pustych.
-* **Discount System**: Implementacja logiki kodów rabatowych (np. `PLANTS20`), dynamicznie przeliczających sumę zamówienia.
-* **Modal & State**: Wykorzystanie **Zustand** do zarządzania stanem globalnym modali (proces rezerwacji) w separacji od kontekstu koszyka.
+### 2. Enhanced Business Logic
+* **Cart Management**: Full shopping cart support – including adding, decrementing quantities, total removal of items, and empty state handling.
+* **Discount System**: Implemented promo code logic (e.g., `PLANTS20`) that dynamically recalculates the order total.
+* **Modal & State Management**: Utilized **Zustand** for global modal state management (reservation process) separated from the cart context.
 
-### 3. Zaawansowane Testowanie
-Wprowadzenie rygorystycznej strategii testowej obejmującej dwie warstwy:
-* **Vitest**: Testy jednostkowe i integracyjne komponentów (mockowanie hooków, kontekstu i API).
-* **Playwright**: Testy End-to-End (E2E) symulujące pełne ścieżki użytkownika w przeglądarce.
+### 3. Advanced Testing
+Introduced a rigorous testing strategy covering two layers:
+* **Vitest**: Unit and integration tests for components (mocking hooks, context, and APIs).
+* **Playwright**: End-to-End (E2E) tests simulating complete user journeys in the browser.
 
 ---
 
 ## 🧪 Testing Strategy
 
-Projekt zawiera 10 kluczowych scenariuszy E2E (Playwright), które gwarantują stabilność krytycznych funkcji aplikacji:
+The project includes 10 key E2E scenarios (Playwright) to ensure the stability of critical business features:
 
-| ID | Test Case | Opis Testu (Co jest sprawdzane?) |
+| ID | Test Case | Description (What is being tested?) |
 |:---|:---|:---|
-| **01** | **Purchase Flow** | Weryfikacja "Happy Path": dodanie produktu do koszyka i poprawna nawigacja do podsumowania. |
-| **02** | **Dynamic Filtering** | Sprawdzenie, czy wybór kategorii (np. "Kaktusy") poprawnie filtruje listę produktów i usuwa niepasujące elementy. |
-| **03** | **Quantity Logic (+)** | Interaktywne zwiększanie liczby sztuk w koszyku i weryfikacja natychmiastowej aktualizacji UI. |
-| **04** | **Quantity Logic (-)** | Zmniejszanie liczby sztuk oraz automatyczne usuwanie produktu z koszyka po osiągnięciu ilości 0. |
-| **05** | **Empty State** | Weryfikacja komunikatów "Your cart is empty" oraz blokady przycisku rezerwacji przy pustym koszyku. |
-| **06** | **Back Navigation** | Sprawdzenie poprawności powrotu z koszyka do sklepu (przycisk "Shop More") i zachowania stanu aplikacji. |
-| **07** | **Discount System** | Walidacja kodu `PLANTS20` – sprawdzenie przeliczenia ceny (Old Price vs New Price) i komunikatu sukcesu. |
-| **08** | **Reservation Modal** | Weryfikacja otwarcia modalu (Zustand) i obecności formularza po kliknięciu "Reserve Now". |
-| **09** | **Deep Clean** | Sprawdzenie, czy ikona kosza (`delete`) usuwa produkt całkowicie, niezależnie od liczby sztuk w wierszu. |
-| **10** | **Mobile Accessibility** | Test funkcjonalny na symulowanym urządzeniu (Viewport 375px) – weryfikacja dostępności przycisków i nawigacji na telefonie. |
+| **01** | **Purchase Flow** | Verification of the "Happy Path": adding a product to the cart and successful navigation to summary. |
+| **02** | **Dynamic Filtering** | Ensuring that category selection (e.g., "Cacti") correctly filters the product list and removes non-matching items. |
+| **03** | **Quantity Logic (+)** | Interactive incrementing of item quantity in the cart and verifying immediate UI updates. |
+| **04** | **Quantity Logic (-)** | Decrementing quantity and ensuring automatic removal of the item from the cart upon reaching 0. |
+| **05** | **Empty State** | Verification of "Your cart is empty" messages and disabling the reservation button when the cart is empty. |
+| **06** | **Back Navigation** | Checking the functionality of the "Shop More" button to return from the cart to the shop while maintaining app state. |
+| **07** | **Discount System** | Validation of the `PLANTS20` code – checking price recalculation (Old Price vs New Price) and success messages. |
+| **08** | **Reservation Modal** | Verifying that the reservation modal (Zustand) opens correctly with the form present after clicking "Reserve Now". |
+| **09** | **Deep Clean** | Ensuring the "delete" icon removes the product entry entirely, regardless of the quantity selected. |
+| **10** | **Mobile Accessibility** | Functional test on a simulated mobile device (375px Viewport) – verifying accessibility of buttons and navigation. |
 
 ---
 
