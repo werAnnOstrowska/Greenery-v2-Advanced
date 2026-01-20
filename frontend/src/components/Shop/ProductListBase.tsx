@@ -21,7 +21,7 @@ const ProductListBase = ({ images }: Props) => {
   );
 
   return (
-    <div className="products-container" style={{ padding: '20px', width: '100%' }}>
+    <div className="products-container" style={{ padding: '20px' }}>
       {/* Zmieniamy direction na "column", żeby wszystko było jedno pod drugim */}
       <Flex direction="column" gap="4" align="center" style={{ width: '100%' }}>
         
