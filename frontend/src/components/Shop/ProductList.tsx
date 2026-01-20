@@ -10,6 +10,7 @@ const ProductListWithLoading = withLoading(ProductListBase);
 
 const ProductList = () => {
   const [images, setImages] = useState<UnsplashImage[]>([]);
+  const [error, setError] = useState<string | null>(null); // Nowy stan na błąd
   const hasFetched = useRef(false);
 
   useEffect(() => {
@@ -17,12 +18,25 @@ const ProductList = () => {
     hasFetched.current = true;
 
     const fetchImages = async () => {
-      const result = await imagesDownload();
-      setImages(result);
+      console.log("Fetching started...");
+      try {
+        const result = await imagesDownload();
+        console.log("Result received:", result);
+        setImages(result);
+      } catch (err) {
+        console.log("Catch block triggered!");
+        setError("Failed to load products...");
+        console.error(err);
+      }
     };
 
     fetchImages();
   }, []);
+
+  // Jeśli jest błąd, wyświetlamy komunikat zamiast listy
+  if (error) {
+    return <div style={{ textAlign: 'center', color: 'red', marginTop: '20px' }}>{error}</div>;
+  }
 
   return (
     <ProductListWithLoading

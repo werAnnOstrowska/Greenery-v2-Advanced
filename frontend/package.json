@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test:u": "vitest run src/tests/vitest",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
     "test:e2e": "playwright test"
   },
   "dependencies": {
@@ -23,6 +25,7 @@
     "chart.js": "^4.5.0",
     "env": "^0.0.2",
     "formik": "^2.4.6",
+    "msw": "^2.12.7",
     "react": "^19.1.0",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.1.0",
@@ -33,11 +36,13 @@
   "devDependencies": {
     "@eslint/js": "^9.25.0",
     "@playwright/test": "^1.53.1",
-    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^25.0.9",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "@types/whatwg-fetch": "^0.0.33",
     "@vitejs/plugin-react": "^4.4.1",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
@@ -47,6 +52,7 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
     "vite": "^6.3.5",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "whatwg-fetch": "^3.6.20"
   }
 }

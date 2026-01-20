@@ -22,26 +22,30 @@ const CartPreview = () => {
    return (
     <div className="cart-preview_wrapper">
         <div className="cart-preview_container">
-            <List dense>
-                {cartItems.map(item => (
-                    <ListItem
-                    key={item.id}
-                    secondaryAction={
-                        <IconButton edge="end"  aria-label="delete" onClick={(e) => {
-                            e.stopPropagation();
-                            removeFromCart(item.id);
-                        }}>
-                        <DeleteIcon />
-                        </IconButton>
-                    }
-                    >
-                    <ListItemText
-                        primary={item.title}
-                        secondary={`Quantity: ${item.quantity} | Price: $${item.price * item.quantity}`}
-                    />
-                    </ListItem>
-                ))}
-            </List>
+            {cartItems.length === 0 ? (
+                <p className="empty-cart-message" >Your cart is empty</p>
+                ) : (
+                <List dense>
+                    {cartItems.map(item => (
+                        <ListItem
+                        key={item.id}
+                        secondaryAction={
+                            <IconButton edge="end"  aria-label="delete" onClick={(e) => {
+                                e.stopPropagation();
+                                removeFromCart(item.id);
+                            }}>
+                            <DeleteIcon />
+                            </IconButton>
+                        }
+                        >
+                        <ListItemText
+                            primary={item.title}
+                            secondary={`Quantity: ${item.quantity} | Price: $${item.price * item.quantity}`}
+                        />
+                        </ListItem>
+                    ))}
+                </List>
+            )}
         </div>
     </div>
   );

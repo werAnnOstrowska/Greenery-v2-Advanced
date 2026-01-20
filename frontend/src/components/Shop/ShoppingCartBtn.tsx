@@ -34,11 +34,11 @@ const ShoppingCartBtn = () => {
         {/* <Link to="/shoppingCart"> */}
             <IconButton aria-label="shopping cart" component={Link} to="/shoppingcart">
             <ShoppingCartIcon fontSize="small" />
-              <CartBadge badgeContent={totalItems} color="success" overlap="circular" invisible={totalItems === 0}/>
+              <CartBadge aria-label="badge" badgeContent={totalItems} color="success" overlap="circular" invisible={totalItems === 0}/>
             </IconButton>
         {/* </Link> */}
 
-        {hovered && totalItems > 0 &&  (
+        {hovered &&  (
         <div style={{
           position: "absolute",
           // top: "100%",

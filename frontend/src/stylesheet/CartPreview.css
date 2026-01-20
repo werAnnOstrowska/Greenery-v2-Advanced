@@ -1,8 +1,5 @@
 .cart-preview_container {
-    /* background-color: #E7F0DC; */
     background-color: white;
-    /* padding: 2rem;
-    border-radius: 2rem; */
     width: 30vw;
     height: 30vh;
     overflow: scroll;
@@ -12,4 +9,13 @@
     background-color: white;
     padding: 2rem;
     border-radius: 2rem;
+}
+
+
+.empty-cart-message {
+    color: #666; /* Delikatny szary kolor */
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;   /* Resetujemy domyślne marginesy paragrafu */
+    text-align: center;
 }

@@ -5,7 +5,7 @@ import {} from "../../stylesheet/TheNavbar.css"
 const TheNavbar = () => {
   return (
     <div className="navbar-container">
-        <Flex justify="center" gap="6">
+        <Flex justify="center" align="center" gap="6">
             <div className="circle"></div>
             <NavbarButton text="Homepage" route="/"/>
             <NavbarButton text="Shop" route="/shop"/>

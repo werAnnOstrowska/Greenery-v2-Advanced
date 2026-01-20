@@ -2,7 +2,7 @@
 
 
 .header-container {
-    /* width: 100vw; */
+    width: 100vw;
     height: 30vh;
     background: linear-gradient(90deg,rgba(114, 151, 98, 1) 0%, rgba(101, 129, 71, 1) 61%, rgba(89, 116, 69, 1) 100%);
     position: relative;
@@ -32,4 +32,53 @@
     position: absolute;
     left: 27%;
     color: #E7F0DC;
+}
+
+
+.header-container a {
+    text-decoration: none; /* Usuwa podkreślenie */
+    color: inherit;        /* Dziedziczy kolor #E7F0DC z rodzica */
+}
+
+/* Zapobiega zmianie koloru po kliknięciu */
+.header-container a:visited {
+    color: inherit;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        height: auto; /* Pozwól kontenerowi rosnąć wraz z treścią */
+        min-height: 25vh;
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%; /* Unikaj 100vw, bo może powodować poziomy pasek przewijania */
+    }
+
+    .header-title, .header-subtitle, .header-container img {
+        /* Resetujemy pozycjonowanie absolutne na mobile */
+        position: static; 
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .header-title {
+        font-size: 4rem; /* Mniejsza czcionka na telefon */
+        line-height: 1;
+    }
+
+    .header-subtitle {
+        right: auto; /* Resetujemy pozycję */
+        top: auto;
+        font-size: 1rem;
+        margin-top: 10px;
+        width: 80%; /* Żeby tekst nie dotykał krawędzi */
+    }
+
+    .header-container img {
+        width: 8rem;
+        margin-top: 15px;
+    }
 }
