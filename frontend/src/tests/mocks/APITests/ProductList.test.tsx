@@ -47,7 +47,7 @@ describe('ProductList - Testy Integracyjne', () => {
     ];
 
     // ROZKAZUJEMY FUNKCJI ZWRÓCIĆ NASZE DANE
-    // Omijamy sieć, omijamy MSW, omijamy fetch. Czysta logika.
+    // Omijamy sieć, omijamy MSW, omijamy fetch.
     vi.mocked(imagesDownload).mockResolvedValue(mockData);
 
     render(
